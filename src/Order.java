@@ -18,14 +18,16 @@ public class Order {
             System.out.println("Here is the menu.");
             System.out.println("CUPCAKES: ");
             int itemNumber = 0;
-            for (int i = 0; i < cupcakeMenu.size(); itemNumber++) {
+            for (int i = 0; i < cupcakeMenu.size(); i++) {
+                itemNumber++;
                 System.out.println(itemNumber + ".");
                 cupcakeMenu.get(i).type();
                 System.out.println("Price: $" + cupcakeMenu.get(i).getPrice());
                 System.out.println();
             }
             System.out.println("DRINKS");
-            for (int i = 0; i < drinkMenu.size(); itemNumber++) {
+            for (int i = 0; i < drinkMenu.size(); i++) {
+                itemNumber++;
                 System.out.println(itemNumber + ".");
                 drinkMenu.get(i).type();
                 System.out.println("Price: $" + drinkMenu.get(i).getPrice());
@@ -69,5 +71,44 @@ public class Order {
                 ordering = false;
             }
         }
+
+        System.out.println(order.get(0));
+        System.out.println(order.get(1));
+        double subtotal = 0.0;
+
+        for (int i = 2; i < order.size(); i++) {
+            if (order.get(i).equals(cupcakeMenu.get(0))) {
+                cupcakeMenu.get(0).type();
+                System.out.println(cupcakeMenu.get(0).getPrice());
+                subtotal = subtotal + cupcakeMenu.get(0).getPrice();
+            } else if (order.get(i).equals(cupcakeMenu.get(1))) {
+                cupcakeMenu.get(1).type();
+                System.out.println(cupcakeMenu.get(1).getPrice());
+                subtotal = subtotal + cupcakeMenu.get(1).getPrice();
+            } else if (order.get(i).equals(cupcakeMenu.get(2))) {
+                cupcakeMenu.get(2).type();
+                System.out.println(cupcakeMenu.get(2).getPrice());
+                subtotal = subtotal + cupcakeMenu.get(2).getPrice();
+            } else if (order.get(i).equals(drinkMenu.get(0))) {
+                drinkMenu.get(0).type();
+                System.out.println(drinkMenu.get(0).getPrice());
+                subtotal = subtotal + drinkMenu.get(0).getPrice();
+            } else if (order.get(i).equals(drinkMenu.get(1))) {
+                drinkMenu.get(1).type();
+                System.out.println(drinkMenu.get(1).getPrice());
+                subtotal = subtotal + drinkMenu.get(1).getPrice();
+            } else if (order.get(i).equals(drinkMenu.get(2))) {
+                drinkMenu.get(2).type();
+                System.out.println(drinkMenu.get(2).getPrice());
+                subtotal = subtotal + drinkMenu.get(2).getPrice();
+            }
+            System.out.println("$" + subtotal);
+        }
+    }
+}
+
+class CreateFile {
+    public CreateFile() {
+
     }
 }

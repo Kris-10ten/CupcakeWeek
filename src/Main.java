@@ -47,7 +47,7 @@ public class Main {
         cupcakeMenu.add(chocolate);
 
         System.out.println("We are in the middle of creating the drink menu. We currently have three types of drinks on" +
-                "\nthe menu but we need to decide on pricing");
+                "\nthe menu but we need to decide on pricing.");
         System.out.println("We are deciding on the price for our bottled water. Here is the description: ");
         water.type();
         System.out.println("How much would you like to charge for the water bottle?" +
