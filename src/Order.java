@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -72,6 +76,8 @@ public class Order {
             }
         }
 
+        input.close();
+
         System.out.println(order.get(0));
         System.out.println(order.get(1));
         double subtotal = 0.0;
@@ -102,13 +108,43 @@ public class Order {
                 System.out.println(drinkMenu.get(2).getPrice());
                 subtotal = subtotal + drinkMenu.get(2).getPrice();
             }
-            System.out.println("$" + subtotal);
+        }
+            System.out.println("Subtotal: $" + subtotal);
+            new CreateFile();
+            new WriteToFile(order);
+    }
+}
+
+
+class CreateFile {
+    public CreateFile() {
+        try {
+            File salesData = new File("salesData.txt");
+            if (salesData.createNewFile()) {
+                System.out.println("File created: " + salesData.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        }
+        catch (IOException e){
+            System.out.println("An error occurred.");
         }
     }
 }
 
-class CreateFile {
-    public CreateFile() {
-
+class WriteToFile {
+    public WriteToFile(ArrayList<Object> order) {
+        try {
+            FileWriter fw = new FileWriter("salesData.text", true);
+            PrintWriter salesWriter = new PrintWriter(fw);
+            for (int i = 0; i < order.size(); i++) {
+                salesWriter.println(order.get(i));
+            }
+            salesWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        }
+        catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
     }
 }
